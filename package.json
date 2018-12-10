@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "test": "mocha"
+        "test": "nodemon --exec 'mocha -R min'"
     },
     "author": "",
     "license": "ISC",
