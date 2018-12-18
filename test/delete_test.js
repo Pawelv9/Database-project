@@ -20,7 +20,7 @@ describe('Deleting a user', () => {
     });
 
     it('class method remove', (done) => {
-        User.remove({ name: 'Tim' })
+        User.deleteOne({ name: 'Tim' })
             .then(() => User.findOne({ name: 'Tim' }))
             .then((user) => {
                 assert(user === null);
@@ -29,7 +29,7 @@ describe('Deleting a user', () => {
     });
 
     it('class method findAndRemove', (done) => {
-        User.findOneAndRemove({ name: 'Tim' })
+        User.findOneAndDelete({ name: 'Tim' })
             .then(() => User.findOne({ name: 'Tim' }))
             .then((user) => {
                 assert(user === null);
@@ -38,7 +38,7 @@ describe('Deleting a user', () => {
     });
 
     it('class method findByIdAndRemove', (done) => {
-        User.findByIdAndRemove(tim._id)
+        User.findOneAndDelete(tim._id)
           .then(() => User.findOne({ name: "Tim" }))
           .then(user => {
             assert(user === null);
