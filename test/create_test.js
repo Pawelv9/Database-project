@@ -3,11 +3,11 @@ const User = require('../src/user');
 
 describe ('Creating records', () => {
     it('saves a user', (done) => {
-        const joe = new User({ name: 'Joe' })
+        const tim = new User({ name: 'Tim' })
     
-        joe.save()
+        tim.save()
         .then(() => {
-            assert(!joe.isNew);
+            assert(!tim.isNew);
             done();
         });
     });
