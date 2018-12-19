@@ -17,4 +17,23 @@ describe('Subdocuments', () => {
         done();
       })
     });
+
+    it('Can add subdocuments to an existing record', (done) => {
+        const tim = new User({
+            name: 'Tim',
+            posts: []
+        });
+
+        tim.save()
+            .then(() => User.findOne({ name: 'Tim' }))
+            .then((user) => {
+                user.posts.push({ title: 'New Post' })
+                return user.save();
+            })
+            .then(() => User.findOne({ name: 'Tim'}))
+            .then((user) => {
+                assert(user.posts[0].title === 'New Post');
+                done(); 
+            })
+    })
 });
