@@ -22,7 +22,7 @@ describe('Validating records', () => {
         const user = new User({ name: "Hi" });
         user.save()
             .catch((validationResult) => {
-                const { message } = validationResult.erroer.name;
+                const { message } = validationResult.errors.name;
 
                 assert(message === "Name must be longer than 2 characters.");
                 done();
